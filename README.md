@@ -91,12 +91,12 @@ npm run dev
 
 | ![Signup Page](screenshots/signup.jpg) |  ![Invalid Credentials](screenshots/invalid_signup.jpg) |
 |--------------------------------------------------|---------------------------------------|
-| *Signup page*                      |        | *Error handling for invalid credentials*  
+| *Signup page* |        | *Error handling for invalid credentials*| 
 
 
-| ![OTP Verification](screenshots/otp.jpg) | 
-|----------------------------------------|-------------------------------------------------|
-| *Secure email verification flow*             |            |
+![OTP Verification](screenshots/otp.jpg)
+
+| *Secure email verification flow* |            
 
 
 | ![Google Auth](screenshots/google.jpg) | ![Google Auth](screenshots/google2.jpg) 
