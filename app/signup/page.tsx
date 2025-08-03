@@ -26,14 +26,16 @@ export default function SignupPage() {
     watch,
   } = useForm<FormData>({
     defaultValues: {
-    //   name: "",
-    //   email: "",
-    //   password: "",
-    //   confirmPassword: "",
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
       role: "user",
     },
-    // mode: "onChange", // Validate on change
+    mode: "onChange", // Validate on change
   });
+
+  const watchedPassword = watch("password");
 
   const onSubmit = async (data: FormData) => {
     setApiError("");
@@ -59,7 +61,7 @@ export default function SignupPage() {
       if (!response.ok) {
         setApiError(responseData.message || "Signup failed. Please try again.");
       } else {
-        router.push(`/auth/verify-email?email=${encodeURIComponent(data.email)}`);
+        router.push(`/verify-email?email=${encodeURIComponent(data.email)}`);
       }
     } catch (error) {
       setApiError("Network error. Please check your connection and try again.");
@@ -68,6 +70,27 @@ export default function SignupPage() {
     }
   };
 
+  const handleGoogleSignUp = async () => {
+    setIsLoading(true);
+    try {
+      // Use NextAuth's signIn with Google provider
+      const result = await signIn("google", {
+        callbackUrl: "/",
+        redirect: false,
+      });
+      
+      if (result?.error) {
+        setApiError("Google sign-up failed. Please try again.");
+      } else if (result?.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("Google sign-up error:", error);
+      setApiError("Google sign-up failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-8">
@@ -103,8 +126,9 @@ export default function SignupPage() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             />
           </svg>
-          Google OAuth (Setup Required)
+          Signup with Google
         </button>
+
 
         {/* Separator */}
         <div className="relative">
@@ -257,7 +281,7 @@ export default function SignupPage() {
             <p className="text-sm text-gray-600">
               Already have an account?{" "}
               <Link
-                href="/auth/signin"
+                href="/login"
                 className="font-medium text-purple-600 hover:text-purple-500"
               >
                 Login

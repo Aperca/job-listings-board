@@ -31,8 +31,8 @@ const Home = async () => {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <hr className="border-t border-gray-200 my-4" />
         
-        {/* Client-side job content */}
-        <JobBoardContent jobs={data} />
+
+        <JobBoardContent jobs={data.data}   />
       </div>
     </div>
   );

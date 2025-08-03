@@ -17,7 +17,6 @@ const JobCard = ({id, title, orgName, location, description, logoUrl, opType, da
     ? logoUrl 
     : '/next.svg';
 
-  // Format date if needed
   const formattedDate = new Date(datePosted).toLocaleDateString();
 
   return (

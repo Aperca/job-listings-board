@@ -1,4 +1,6 @@
 "use client";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -12,9 +14,17 @@ interface FormData {
 }
 
 export default function SigninPage() {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState("");
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/"); // or your job board route
+    }
+  }, [status, router]);
+
 
   const {
     register,
@@ -25,7 +35,7 @@ export default function SigninPage() {
       email: "",
       password: "",
     },
-    mode: "onChange", // Validate on change
+    mode: "onSubmit", // Validate on change
   });
 
   const onSubmit = async (data: FormData) => {
@@ -120,7 +130,7 @@ export default function SigninPage() {
                     {apiError}
                   </h3>
                   <p className="text-xs text-red-600 mt-1">
-                    If you're sure your credentials are correct, try creating a new account.
+                        Invalid Credentials!
                   </p>
                 </div>
               </div>
@@ -148,7 +158,7 @@ export default function SigninPage() {
             <p className="text-sm text-gray-600">
               Don't have an account?{" "}
               <Link
-                href="/auth/signup"
+                href="/signup"
                 className="font-medium text-purple-600 hover:text-purple-500"
               >
                 Sign Up
@@ -156,12 +166,15 @@ export default function SigninPage() {
             </p>
           </div>
 
-          {/* Debug section - remove this later */}
-          <div className="mt-4 p-3 bg-gray-50 rounded-md">
-            <p className="text-xs text-gray-600 mb-2">💡 Debug Tip:</p>
-            <p className="text-xs text-gray-500">
-              If login keeps failing, try creating a new account with a different email. 
-              Make sure to complete the email verification process.
+          <div className="text-center">
+            <p className="text-sm text-gray-600">
+              Forgot your password?{" "}
+              <Link
+                href="/auth/forgot-password"
+                className="font-medium text-purple-600 hover:text-purple-500"
+              >
+                Reset Password
+              </Link>
             </p>
           </div>
         </form>

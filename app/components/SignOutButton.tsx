@@ -10,9 +10,9 @@ export default function SignOutButton() {
   const handleSignOut = async () => {
     await signOut({
       redirect: false,
-      callbackUrl: "/auth/signin"
+      callbackUrl: "/login"
     });
-    router.push("/auth/signin");
+    router.push("/login");
   };
 
   return (

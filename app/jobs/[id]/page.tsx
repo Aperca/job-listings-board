@@ -26,7 +26,7 @@ const getSpecificJob = async (id: string): Promise<JobDetail> => {
     const res = await fetch(`https://akil-backend.onrender.com/opportunities/${id}`)
     if (!res.ok) throw new Error("Failed to fetch job detail")
     const data = await res.json();
-    return data.data; y
+    return data.data; 
 }
 
 const detailPage = async ({ params }: Props) => {
@@ -47,6 +47,7 @@ const detailPage = async ({ params }: Props) => {
  
     return (
         <div className="flex flex-col lg:flex-row gap-6 min-h-screen bg-gray-100 p-4 md:p-8">
+
             {/* Main content */}
             <main className="w-full lg:w-3/4 bg-white rounded-lg shadow-md p-6">
                 {/* Header */}
