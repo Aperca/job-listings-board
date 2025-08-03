@@ -89,10 +89,18 @@ npm run dev
 |-----------------------------------|----------------------------------------|
 | *A Welcome page*     | *View job listings*           |
 
-| ![Signup Page](screenshots/singup.jpg) | ![OTP Verification](screenshots/otp.jpg) |
+| ![Signup Page](screenshots/signup.jpg) |  ![Invalid Credentials](screenshots/invalid_signup.jpg) |
 |--------------------------------------------------|---------------------------------------|
-| *Signup page*                      | *Secure email verification flow*         |
+| *Signup page*                      |        | *Error handling for invalid credentials*  
 
-| ![Google Auth](screenshots/google.jpg) | ![Invalid Credentials](screenshots/invalid_signup.jpg) |
+
+| ![OTP Verification](screenshots/otp.jpg) | 
 |----------------------------------------|-------------------------------------------------|
-| *One-click Google sign-in*             | *Error handling for failed logins*              |
+| *Secure email verification flow*             |            |
+
+
+| ![Google Auth](screenshots/google.jpg) | ![Google Auth](screenshots/google2.jpg) 
+|----------------------------------------|-------------------------------------------------|
+| *One-click Google sign-in*             |            |
+
+
