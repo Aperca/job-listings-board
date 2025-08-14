@@ -1,6 +1,5 @@
 import { CalendarDays, Clock, MapPin } from 'lucide-react';
 
-
 type AboutInfo = {
     posted_on: string;
   deadline: string;
