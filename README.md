@@ -9,7 +9,9 @@ A Next.js-powered job board featuring Google authentication, detailed listings, 
 - **OTP Verification**: Secure email confirmation for custom signups
 - **Rich Job Listings**: Detailed view with responsibilities, requirements, and company info
 - **Smart Filtering**: Sort by relevance, date posted, and job type
-
+- **Bookmark Jobs**: Save job postings for later review with a single click
+-**Persistent Storage**: Bookmarks stored in the database for access across sessions
+-**Tested Reliability**: Cypress E2E tests ensure the bookmark feature works across scenarios
 
 
 ## Quick Start
@@ -56,6 +58,12 @@ A Next.js-powered job board featuring Google authentication, detailed listings, 
 - Google handles verification
 - Immediate access upon success
 
+### Bookmark Feature
+- Click the bookmark icon on a job card to toggle its saved status
+- Saved jobs appear in your Bookmarks page for quick access
+- Bookmarks are stored in the backend, so they persist across sessions and devices
+- Fully tested with Cypress E2E flows
+
 ## Error Handling
 
 - Invalid credentials show specific feedback
@@ -67,6 +75,7 @@ A Next.js-powered job board featuring Google authentication, detailed listings, 
 - **Styling**: Tailwind CSS + Lucide icons
 - **Authentication**: NextAuth.js
 - **Validation**: React Hook Form + Zod
+- **Testing**: Cypress (E2E) + Jest (unit/component tests)
 
 ## Troubleshooting
 
@@ -102,5 +111,9 @@ npm run dev
 | ![Google Auth](screenshots/google.jpg) | ![Google Auth](screenshots/google2.jpg) 
 |----------------------------------------|-------------------------------------------------|
 | *One-click Google sign-in*             |            |
+
+| ![Bookmark](screenshots/bookmark.jpg)  | ![Google Auth](screenshots/bookmark_page.jpg) 
+|----------------------------------------|-------------------------------------------------|
+| *Bookmark* |                           |  *Bookmark Page * |
 
 

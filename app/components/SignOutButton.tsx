@@ -1,18 +1,15 @@
-// components/SignOutButton.tsx
-"use client";
-
-import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+'use client';
+import { signOut } from 'next-auth/react';
 
 export default function SignOutButton() {
-  const router = useRouter();
-  
   const handleSignOut = async () => {
-    await signOut({
-      redirect: false,
-      callbackUrl: "/login"
-    });
-    router.push("/login");
+    try {
+      await signOut({ redirect: true, callbackUrl: '/login' });
+    } catch (error) {
+      console.error('Sign out error:', error);
+      alert('Failed to sign out. Please try again.');
+      window.location.href = '/login';
+    }
   };
 
   return (
